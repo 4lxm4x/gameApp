@@ -1,8 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import Colors from "../utils/Colors";
 
 export default function MainButton({ children, onPress }) {
   return (
-    <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={onPress}>
+    <Pressable
+      style={({ pressed }) => pressed && styles.pressed}
+      onPress={onPress}
+    >
       <View style={styles.buttonContainer}>
         <Text style={styles.buttonText}>{children}</Text>
       </View>
@@ -19,8 +23,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   buttonText: {
-    color: "yellow",
+    color: Colors.secondaryColor,
     fontSize: 18,
+    textAlign: "center",
   },
   pressed: {
     opacity: 0.5,

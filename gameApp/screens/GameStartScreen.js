@@ -2,27 +2,25 @@ import { Alert, StyleSheet, TextInput, View } from "react-native";
 import MainButton from "../components/MainButton";
 import { useState } from "react";
 
-export default function GameStartScreen({onPickNumber}) {
-  const [enteredNumber, setEnteredNumber] = useState('')
-
+export default function GameStartScreen({ onPickNumber }) {
+  const [enteredNumber, setEnteredNumber] = useState("");
 
   function handleSubmitPressed() {
     const validNumber = parseInt(enteredNumber);
 
-
     if (isNaN(validNumber) || validNumber <= 0 || validNumber >= 99) {
-      Alert.alert('Wrong value!', 'Please enter value from 1 to 99', [{ text: 'Okay', style: 'destructive',onPress: handleReset }])
-    } else {onPickNumber(enteredNumber);}
-
-    
-
-  
+      Alert.alert("Wrong value!", "Please enter value from 1 to 99", [
+        { text: "Okay", style: "destructive", onPress: handleReset },
+      ]);
+    } else {
+      onPickNumber(enteredNumber);
+    }
   }
 
   function handleReset() {
-    setEnteredNumber('');
+    setEnteredNumber("");
   }
-  
+
   function handleChangeText(enteredValue) {
     setEnteredNumber(enteredValue);
   }
@@ -31,6 +29,7 @@ export default function GameStartScreen({onPickNumber}) {
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.textInput}
+        autoFocus
         maxLength={2}
         keyboardType="number-pad"
         autoComplete="false"
@@ -48,7 +47,6 @@ export default function GameStartScreen({onPickNumber}) {
 
 const styles = StyleSheet.create({
   inputContainer: {
-   
     width: "80%",
     padding: 24,
     marginHorizontal: 24,
@@ -59,8 +57,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 4,
     alignItems: "center",
-    elevation: 4
-    
+    elevation: 4,
   },
   textInput: {
     fontSize: 32,
